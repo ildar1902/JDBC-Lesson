@@ -19,7 +19,7 @@ public class Application {
                              "from employee inner join city " +
                              "on city.city_id=employee.city_id " +
                              "where employee.id = (?)")) {
-            statement.setInt(1, 4);
+            statement.setInt(1, 14);
             final ResultSet resultSet = statement.executeQuery();
             System.out.println("---------------------");
             while (resultSet.next()) {
@@ -42,8 +42,10 @@ public class Application {
             City city1 = new City(7, "Самара");
             Employee employee1 = new Employee("Сергей", "Есенин", "муж", 25, city1);
             employeeDAO.create(employee1);
-
+            employeeDAO.deleteById(15);
+            employeeDAO.updateAgeById(14, 18);
             System.out.println("employeeDAO.readById(4) = " + employeeDAO.readById(14));
+            System.out.println("employeeDAO.readById(4) = " + employeeDAO.readById(16));
         }
     }
 }

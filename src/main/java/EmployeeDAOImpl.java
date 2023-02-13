@@ -22,7 +22,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             statement.setString(3, employee.getGender());
             statement.setInt(4, employee.getAge());
             statement.setInt(5, employee.getCity_id().getCity_id());
-            statement.executeQuery();
+            statement.executeUpdate(); // в материалах урока ошибка - пишут, что здесь нужен метод executeQuery()
+            // и из-за этого сначала были ошибки
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -78,7 +80,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 "UPDATE employee SET age = (?) WHERE id = (?)")) {
             statement.setInt(1, age);
             statement.setInt(2, id);
-            statement.executeQuery();
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -90,7 +92,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 "DELETE FROM employee WHERE id=(?)"
         )) {
             statement.setInt(1, id);
-            statement.executeQuery();
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
