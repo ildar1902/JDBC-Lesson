@@ -2,6 +2,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.sql.DriverManager.getConnection;
 
@@ -16,7 +18,7 @@ public class Application {
                      "select name, surname, gender, age, city_name " +
                              "from employee inner join city " +
                              "on city.city_id=employee.city_id " +
-                             "where employee.id = (?);")) {
+                             "where employee.id = (?)")) {
             statement.setInt(1, 4);
             final ResultSet resultSet = statement.executeQuery();
             System.out.println("---------------------");
@@ -34,6 +36,14 @@ public class Application {
                 System.out.println("Возраст: " + age );
                 System.out.println("---------------------");
             }
+        }
+        try (Connection connection = getConnection(url, user, password);) {
+            EmployeeDAO employeeDAO = new EmployeeDAOImpl(connection);
+            City city1 = new City(7, "Самара");
+            Employee employee1 = new Employee("Сергей", "Есенин", "муж", 25, city1);
+            employeeDAO.create(employee1);
+
+            System.out.println("employeeDAO.readById(4) = " + employeeDAO.readById(14));
         }
     }
 }
