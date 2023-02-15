@@ -1,17 +1,27 @@
+import javax.persistence.*;
 import java.util.Objects;
-
+@Entity
+@Table(name = "employee")
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "surname")
     private String surname;
+    @Column(name = "gender")
     private String gender;
+    @Column(name = "age")
     private int age;
-    private City city_id;
+    @Column(name = "city_id")
+    private int city_id;
 
     public Employee() {
     }
 
-    public Employee(String name, String surname, String gender, int age, City city_id) {
+    public Employee(String name, String surname, String gender, int age, int city_id) {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
@@ -19,7 +29,7 @@ public class Employee {
         this.city_id = city_id;
     }
 
-    public Employee(int id, String name, String surname, String gender, int age, City city_id) {
+    public Employee(int id, String name, String surname, String gender, int age, int city_id) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -64,11 +74,11 @@ public class Employee {
         this.age = age;
     }
 
-    public City getCity_id() {
+    public int getCity_id() {
         return city_id;
     }
 
-    public void setCity_id(City city_id) {
+    public void setCity_id(int city_id) {
         this.city_id = city_id;
     }
 
@@ -93,8 +103,6 @@ public class Employee {
                 "\n"
                 + "Пол: " + gender +
                 "\n"
-                + "Возраст: " + age +
-                "\n"
-                + "Город проживания: " + city_id.getCityName();
+                + "Возраст: " + age;
     }
 }

@@ -21,7 +21,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             statement.setString(2, employee.getSurname());
             statement.setString(3, employee.getGender());
             statement.setInt(4, employee.getAge());
-            statement.setInt(5, employee.getCity_id().getCityId());
+            statement.setInt(5, employee.getCity_id());
             statement.executeUpdate(); // в материалах урока ошибка - пишут, что здесь нужен метод executeQuery()
             // и из-за этого сначала были ошибки
 
@@ -45,8 +45,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 employee.setSurname(resultSet.getString("surname"));
                 employee.setGender(resultSet.getString("gender"));
                 employee.setAge(resultSet.getInt("age"));
-                employee.setCity_id(new City(resultSet.getInt("city_id"),
-                        resultSet.getString("city_name")));
+                employee.setCity_id(resultSet.getInt("city_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,7 +66,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 String surname = resultSet.getString("surname");
                 String gender = resultSet.getString("gender");
                 int age = resultSet.getInt("age");
-                City city = new City(resultSet.getInt("city_id"), resultSet.getString("city_name"));
+                int city = resultSet.getInt("city_id");
                 employees.add(new Employee(name, surname, gender, age, city));
             }
         } catch (SQLException e) {
