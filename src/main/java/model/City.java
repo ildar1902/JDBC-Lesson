@@ -1,3 +1,5 @@
+package model;
+
 import java.util.Objects;
 
 public class City {
@@ -44,8 +46,8 @@ public class City {
     @Override
     public String toString() {
         return "City{" +
-                "city_id=" + cityId +
-                ", city_name='" + cityName + '\'' +
+                "cityId=" + cityId +
+                ", cityName='" + cityName + '\'' +
                 '}';
     }
 }
