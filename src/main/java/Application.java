@@ -41,11 +41,12 @@ public class Application {
             EmployeeDAO employeeDAO = new EmployeeDAOImpl(connection);
             City city1 = new City(7, "Самара");
             Employee employee1 = new Employee("Сергей", "Есенин", "муж", 25, city1);
-            employeeDAO.create(employee1);
+/*            employeeDAO.create(employee1);
             employeeDAO.deleteById(15);
-            employeeDAO.updateAgeById(14, 18);
-            System.out.println("employeeDAO.readById(4) = " + employeeDAO.readById(14));
-            System.out.println("employeeDAO.readById(4) = " + employeeDAO.readById(16));
+            employeeDAO.updateAgeById(14, 18);*/
+            System.out.println(employeeDAO.readById(14));
+            System.out.println("---------------------");
+            System.out.println(employeeDAO.readById(16));
         }
     }
 }

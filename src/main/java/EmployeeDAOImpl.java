@@ -25,8 +25,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             statement.executeUpdate(); // в материалах урока ошибка - пишут, что здесь нужен метод executeQuery()
             // и из-за этого сначала были ошибки
 
-        } catch (SQLException e) {
+        } /*catch (SQLException e) {
             e.printStackTrace();
+        }*/ catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

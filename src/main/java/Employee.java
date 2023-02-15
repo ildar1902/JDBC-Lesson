@@ -87,13 +87,14 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", gender='" + gender + '\'' +
-                ", age=" + age +
-                ", city_id=" + city_id +
-                '}';
+        return "Имя: " + name +
+                "\n"
+                + "Фамилия: " + surname +
+                "\n"
+                + "Пол: " + gender +
+                "\n"
+                + "Возраст: " + age +
+                "\n"
+                + "Город проживания: " + city_id.getCityName();
     }
 }
