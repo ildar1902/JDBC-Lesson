@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) throws SQLException {
-        City c1 = new City(8,"Майами");
+        City c1 = new City(8, "Майами");
         Employee empl1 = new Employee("Иван", "Половинкик", "муж", 21, c1);
         EmployeeDao employeeDAO = new EmployeeDAOImpl();
         CityDao cityDao = new CityDaoImpl();

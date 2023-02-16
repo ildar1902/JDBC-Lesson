@@ -41,8 +41,7 @@ public class CityDaoImpl implements CityDao {
     public void delete(City city) {
         try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.remove(city);
-
+            session.delete(city);
             transaction.commit();
         }
     }

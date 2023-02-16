@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.*;
 import java.util.Objects;
+
 @Entity
 @Table(name = "employee")
 public class Employee {
@@ -17,8 +18,8 @@ public class Employee {
     private String gender;
     @Column(name = "age")
     private int age;
-@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-@JoinColumn(name = "city_id")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
     private City city;
 
     public Employee() {
