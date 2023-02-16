@@ -120,7 +120,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         }*/
         try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.delete(employee);
+            session.remove(employee);
             transaction.commit();
         }
     }
