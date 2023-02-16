@@ -1,3 +1,6 @@
+package Impl;
+
+import Dao.EmployeeDao;
 import model.Employee;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -6,7 +9,7 @@ import utils.HibernateSessionFactoryUtil;
 import java.sql.Connection;
 import java.util.List;
 
-public class EmployeeDAOImpl implements EmployeeDAO {
+public class EmployeeDAOImpl implements EmployeeDao {
     private Connection connection;
 
     public EmployeeDAOImpl() {
@@ -120,7 +123,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         }*/
         try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.remove(employee);
+            session.delete(employee);
             transaction.commit();
         }
     }

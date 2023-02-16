@@ -17,31 +17,36 @@ public class Employee {
     private String gender;
     @Column(name = "age")
     private int age;
-    @Column(name = "city_id")
-    private int city_id;
+@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+@JoinColumn(name = "city_id")
+    private City city;
 
     public Employee() {
     }
 
-    public Employee(String name, String surname, String gender, int age, int city_id) {
-        this.name = name;
-        this.surname = surname;
-        this.gender = gender;
-        this.age = age;
-        this.city_id = city_id;
-    }
-
-    public Employee(int id, String name, String surname, String gender, int age, int city_id) {
+    public Employee(int id, String name, String surname, String gender, int age, City city) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.gender = gender;
         this.age = age;
-        this.city_id = city_id;
+        this.city = city;
+    }
+
+    public Employee(String name, String surname, String gender, int age, City city) {
+        this.name = name;
+        this.surname = surname;
+        this.gender = gender;
+        this.age = age;
+        this.city = city;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -76,12 +81,12 @@ public class Employee {
         this.age = age;
     }
 
-    public int getCity_id() {
-        return city_id;
+    public City getCity() {
+        return city;
     }
 
-    public void setCity_id(int city_id) {
-        this.city_id = city_id;
+    public void setCity(City city) {
+        this.city = city;
     }
 
     @Override
@@ -89,22 +94,22 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return id == employee.id && age == employee.age && city_id == employee.city_id && Objects.equals(name, employee.name) && Objects.equals(surname, employee.surname) && Objects.equals(gender, employee.gender);
+        return id == employee.id && age == employee.age && Objects.equals(name, employee.name) && Objects.equals(surname, employee.surname) && Objects.equals(gender, employee.gender) && Objects.equals(city, employee.city);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, gender, age, city_id);
+        return Objects.hash(id, name, surname, gender, age, city);
     }
 
     @Override
     public String toString() {
-        return "Имя: " + name +
-                "\n"
-                + "Фамилия: " + surname +
-                "\n"
-                + "Пол: " + gender +
-                "\n"
-                + "Возраст: " + age;
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", gender='" + gender + '\'' +
+                ", age=" + age +
+                ", city=" + city +
+                '}';
     }
 }
