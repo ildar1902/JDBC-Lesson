@@ -24,6 +24,9 @@ public class Employee {
 
     public Employee() {
     }
+    public Employee(int id) {
+        this.id = id;
+    }
 
     public Employee(int id, String name, String surname, String gender, int age, City city) {
         this.id = id;
@@ -40,6 +43,12 @@ public class Employee {
         this.gender = gender;
         this.age = age;
         this.city = city;
+    }
+    public Employee(String name, String surname, String gender, int age) {
+        this.name = name;
+        this.surname = surname;
+        this.gender = gender;
+        this.age = age;
     }
 
     public int getId() {
@@ -95,22 +104,16 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return id == employee.id && age == employee.age && Objects.equals(name, employee.name) && Objects.equals(surname, employee.surname) && Objects.equals(gender, employee.gender) && Objects.equals(city, employee.city);
+        return age == employee.age && Objects.equals(name, employee.name) && Objects.equals(surname, employee.surname) && Objects.equals(gender, employee.gender);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, gender, age, city);
+        return Objects.hash(name, surname, gender, age);
     }
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", gender='" + gender + '\'' +
-                ", age=" + age +
-                ", city=" + city +
-                '}';
+        return name +" " + surname + ", пол: " + gender + ", возраст: " + age + ", " + city;
     }
 }

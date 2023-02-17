@@ -15,8 +15,8 @@ public class Application {
 
         EmployeeDao employeeDAO = new EmployeeDAOImpl();
         CityDao cityDao = new CityDaoImpl();
-        List<City> cities = cityDao.readAll();
-        cities.forEach(System.out::println);
+        employeeDAO.deleteEmployeeById(14);
+
         List<Employee> employees = employeeDAO.readAll();
         employees.forEach(System.out::println);
 

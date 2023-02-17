@@ -8,7 +8,6 @@ import java.util.Objects;
 
 public class City {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "city_id")
     private int cityId;
     @Column(name = "city_name")
@@ -57,7 +56,6 @@ public class City {
 
     @Override
     public String toString() {
-        return cityId + ":" +
-                " город " + cityName;
+        return "город проживания: " + cityName;
     }
 }
