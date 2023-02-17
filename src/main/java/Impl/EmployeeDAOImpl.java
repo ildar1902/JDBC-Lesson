@@ -47,7 +47,6 @@ public class EmployeeDAOImpl implements EmployeeDao {
 
     @Override
     public void updateEmployee(Employee employee) {
-
         try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             session.update(employee);
