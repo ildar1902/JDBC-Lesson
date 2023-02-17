@@ -18,7 +18,7 @@ public class Employee {
     private String gender;
     @Column(name = "age")
     private int age;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL) //кажется, так правильнее
     @JoinColumn(name = "city_id")
     private City city;
 
